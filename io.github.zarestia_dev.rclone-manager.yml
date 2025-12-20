@@ -28,7 +28,7 @@ finish-args:
   - --filesystem=xdg-documents
   
 modules:
-  - name: fusermount-wrapper # Need for mount and other rclone operations
+  - name: fusermount-wrapper # Need for mount and other (Actually only for mount) rclone operations
     buildsystem: simple
     sources:
       - type: file
@@ -36,16 +36,17 @@ modules:
     build-commands:
       - install -Dm755 fusermount-wrapper.sh /app/bin/fusermount3
 
-  - name: 7zip # For Encrypt and Decrypt exported settings
-    buildsystem: simple
-    sources:
-      - type: archive
-        url: https://github.com/ip7z/7zip/releases/download/25.01/7z2501-src.tar.xz
-        sha256: ed087f83ee789c1ea5f39c464c55a5c9d4008deb0efe900814f2df262b82c36e
-        strip-components: 0
-    build-commands:
-      - cd CPP/7zip/Bundles/Alone2 && make -f makefile.gcc
-      - install -Dm755 CPP/7zip/Bundles/Alone2/_o/7zz /app/bin/7z
+  # Rust sevenz-rust2 create added for Encrypt and Decrypt exported settings. Deprecated but leave for reference
+  # - name: 7zip
+  #   buildsystem: simple
+  #   sources:
+  #     - type: archive
+  #       url: https://github.com/ip7z/7zip/releases/download/25.01/7z2501-src.tar.xz
+  #       sha256: ed087f83ee789c1ea5f39c464c55a5c9d4008deb0efe900814f2df262b82c36e
+  #       strip-components: 0
+  #   build-commands:
+  #     - cd CPP/7zip/Bundles/Alone2 && make -f makefile.gcc
+  #     - install -Dm755 CPP/7zip/Bundles/Alone2/_o/7zz /app/bin/7z
 
   - shared-modules/libayatana-appindicator/libayatana-appindicator-gtk3.json
   - name: rclone-manager
@@ -61,8 +62,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/Zarestia-Dev/rclone-manager.git
-        commit: 68f994c6c2c481772c0f5740708f67db18c57485
-        tag: v0.1.8
+        commit: 5b25545bd93a2ac6e034f2fff9f8ca25996ae651
+        tag: v0.1.9
       
       - npm-sources.json
       - cargo-sources.json
