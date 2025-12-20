@@ -28,7 +28,7 @@ finish-args:
   - --filesystem=xdg-documents
   
 modules:
-  - name: fusermount-wrapper # Need for mount and other (Accually only for mount) rclone operations
+  - name: fusermount-wrapper # Need for mount and other (Actually only for mount) rclone operations
     buildsystem: simple
     sources:
       - type: file
