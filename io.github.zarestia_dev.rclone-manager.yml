@@ -36,7 +36,7 @@ modules:
     build-commands:
       - install -Dm755 fusermount-wrapper.sh /app/bin/fusermount3
 
-  # Rust sevenz-rust2 create added for Encrypt and Decrypt exported settings. Depreaced but leave for reference
+  # Rust sevenz-rust2 create added for Encrypt and Decrypt exported settings. Deprecated but leave for reference
   # - name: 7zip
   #   buildsystem: simple
   #   sources:
