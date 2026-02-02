@@ -85,7 +85,10 @@ modules:
       - ar -x src-tauri/target/release/bundle/deb/*.deb --output extracted
       - tar -C extracted -xf extracted/data.tar.gz
       - install -Dm755 extracted/usr/bin/rclone-manager /app/bin/rclone-manager
-            
+      
+      # Install libraries (includes i18n)
+      - cp -r extracted/usr/lib/* /app/lib/
+      
       # Install icons
       - install -Dm644 extracted/usr/share/icons/hicolor/128x128/apps/'rclone-manager.png' /app/share/icons/hicolor/128x128/apps/io.github.zarestia_dev.rclone-manager.png
       - install -Dm644 extracted/usr/share/icons/hicolor/32x32/apps/'rclone-manager.png' /app/share/icons/hicolor/32x32/apps/io.github.zarestia_dev.rclone-manager.png
