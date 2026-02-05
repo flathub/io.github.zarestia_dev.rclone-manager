@@ -62,8 +62,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/Zarestia-Dev/rclone-manager.git
-        commit: 280f36cdb23ed441c0be963af4ff3df189af50d1
-        tag: v0.2.0
+        commit: e8d1f60146c5289fd2df0f12495462cae40f5def
+        tag: v0.2.1
       
       - npm-sources.json
       - cargo-sources.json
@@ -80,12 +80,16 @@ modules:
       # Disable updater artifacts in Tauri config for Flatpak builds
       - npm run --offline tauri build -- --bundles deb --config '{"bundle":{"createUpdaterArtifacts":false}}' --features flatpak
       
+
       # Extract and install from the generated .deb
       - mkdir extracted
       - ar -x src-tauri/target/release/bundle/deb/*.deb --output extracted
       - tar -C extracted -xf extracted/data.tar.gz
       - install -Dm755 extracted/usr/bin/rclone-manager /app/bin/rclone-manager
-            
+
+      # Copy libraries (For now, only language packs)      
+      - cp -r extracted/usr/lib/* /app/lib/
+
       # Install icons
       - install -Dm644 extracted/usr/share/icons/hicolor/128x128/apps/'rclone-manager.png' /app/share/icons/hicolor/128x128/apps/io.github.zarestia_dev.rclone-manager.png
       - install -Dm644 extracted/usr/share/icons/hicolor/32x32/apps/'rclone-manager.png' /app/share/icons/hicolor/32x32/apps/io.github.zarestia_dev.rclone-manager.png
