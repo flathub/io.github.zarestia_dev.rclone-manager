@@ -22,8 +22,8 @@ finish-args:
   - --talk-name=org.freedesktop.Notifications
   - --talk-name=org.kde.StatusNotifierWatcher
   - --talk-name=org.freedesktop.secrets
-  - --talk-name=io.github.zarestia_dev.rclone-manager.SingleInstance
-  - --own-name=io.github.zarestia_dev.rclone-manager.SingleInstance
+  - --talk-name=io.github.zarestia_dev.rclone-manager
+  - --own-name=io.github.zarestia_dev.rclone-manager
   - --system-talk-name=org.freedesktop.NetworkManager
   - --filesystem=xdg-run/tray-icon:create
   - --filesystem=xdg-download
