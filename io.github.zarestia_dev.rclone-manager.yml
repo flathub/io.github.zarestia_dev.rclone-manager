@@ -62,8 +62,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/Zarestia-Dev/rclone-manager.git
-        commit: 2357518f059371f1529eff44e36b44e6acd64d48
-        tag: v0.2.2
+        commit: 288cd43dd900f726084f3643320fcfded406f61e
+        tag: v0.2.3
       
       - npm-sources.json
       - cargo-sources.json
