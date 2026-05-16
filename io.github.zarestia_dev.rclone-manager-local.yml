@@ -36,49 +36,40 @@ modules:
     build-commands:
       - install -Dm755 fusermount-wrapper.sh /app/bin/fusermount3
 
-  # Rust sevenz-rust2 create added for Encrypt and Decrypt exported settings. Deprecated but leave for reference
-  # - name: 7zip
-  #   buildsystem: simple
-  #   sources:
-  #     - type: archive
-  #       url: https://github.com/ip7z/7zip/releases/download/25.01/7z2501-src.tar.xz
-  #       sha256: ed087f83ee789c1ea5f39c464c55a5c9d4008deb0efe900814f2df262b82c36e
-  #       strip-components: 0
-  #   build-commands:
-  #     - cd CPP/7zip/Bundles/Alone2 && make -f makefile.gcc
-  #     - install -Dm755 CPP/7zip/Bundles/Alone2/_o/7zz /app/bin/7z
-
   - shared-modules/libayatana-appindicator/libayatana-appindicator-gtk3.json
   - name: rclone-manager
     buildsystem: simple
     build-options:
       append-path: /usr/lib/sdk/node20/bin:/usr/lib/sdk/rust-stable/bin
+      build-args:
+        - --share=network
       env:
         CARGO_HOME: /run/build/rclone-manager/cargo
         NPM_CONFIG_LOGLEVEL: info
         npm_config_cache: /run/build/rclone-manager/flatpak-node/npm-cache
         npm_config_nodedir: /usr/lib/sdk/node20
-        npm_config_offline: 'true'
     sources:
-      - type: git
-        url: https://github.com/Zarestia-Dev/rclone-manager.git
-        commit: ea3f128072e781f5f5194b0df86500776ede2831
-        tag: v0.2.5
+      - type: dir
+        path: ../rclone-manager
       
-      - npm-sources.json
-      - cargo-sources.json
+      - type: dir
+        path: ../rcman
+        dest: rcman-src
     
     build-commands:
-      # Install npm dependencies offline
-      - npm ci --offline
+      # Patch Cargo.toml to point to the internal 'rcman' source
+      - sed -i 's|path = "../../rcman"|path = "../rcman-src"|' src-tauri/Cargo.toml
 
-      - cargo --offline fetch --manifest-path src-tauri/Cargo.toml --verbose
+      # Install npm dependencies (network enabled)
+      - npm ci --legacy-peer-deps
+
+      - cargo fetch --manifest-path src-tauri/Cargo.toml --verbose
       
       # Disable font inlining to avoid network requests during build
       - jq '.projects."rclone-manager".architect.build.options.optimization = {"fonts":false} | .projects."rclone-manager".architect.build.configurations.production.optimization = {"fonts":false, "scripts":true, "styles":true}' angular.json > angular.json.tmp && mv angular.json.tmp angular.json
       
       # Disable updater artifacts in Tauri config for Flatpak builds
-      - npm run --offline tauri build -- --bundles deb --config '{"bundle":{"createUpdaterArtifacts":false}}' --features flatpak
+      - npm run tauri build -- --bundles deb --config '{"bundle":{"createUpdaterArtifacts":false}}' --features flatpak
       
 
       # Extract and install from the generated .deb
