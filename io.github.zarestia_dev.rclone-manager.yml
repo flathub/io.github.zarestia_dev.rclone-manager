@@ -4,12 +4,12 @@ runtime: org.gnome.Platform
 runtime-version: '50'
 sdk: org.gnome.Sdk
 sdk-extensions:
-  - org.freedesktop.Sdk.Extension.node22
+  - org.freedesktop.Sdk.Extension.node26
   - org.freedesktop.Sdk.Extension.rust-stable
 
 command: rclone-manager
 build-options:
-  append-path: /usr/lib/sdk/node22/bin:/usr/lib/sdk/rust-stable/bin
+  append-path: /usr/lib/sdk/node26/bin:/usr/lib/sdk/rust-stable/bin
   env:
     CARGO_HOME: /run/build/rclone-manager/cargo
     NPM_CONFIG_LOGLEVEL: info
@@ -52,18 +52,17 @@ modules:
   - name: rclone-manager
     buildsystem: simple
     build-options:
-      append-path: /usr/lib/sdk/node20/bin:/usr/lib/sdk/rust-stable/bin
+      append-path: /usr/lib/sdk/node26/bin:/usr/lib/sdk/rust-stable/bin
       env:
         CARGO_HOME: /run/build/rclone-manager/cargo
         NPM_CONFIG_LOGLEVEL: info
         npm_config_cache: /run/build/rclone-manager/flatpak-node/npm-cache
-        npm_config_nodedir: /usr/lib/sdk/node20
+        npm_config_nodedir: /usr/lib/sdk/node26
         npm_config_offline: 'true'
     sources:
       - type: git
         url: https://github.com/Zarestia-Dev/rclone-manager.git
-        commit: b5a3fba6b5e6b873cd9485da05bdd0457eb3b691
-        tag: v0.2.9
+        commit: f87cb5228a22a7101de7b3f377e4b3f64978a69e
       
       - npm-sources.json
       - cargo-sources.json
