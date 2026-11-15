@@ -1497,19 +1497,6 @@
     {
         "type": "archive",
         "archive-type": "tar-gzip",
-        "url": "https://static.crates.io/crates/croner/croner-4.0.2.crate",
-        "sha256": "26d09284075f5c87675790d1ad74212a7863eb8bdf228cdbd364f08a152fc62d",
-        "dest": "cargo/vendor/croner-4.0.2"
-    },
-    {
-        "type": "inline",
-        "contents": "{\"package\": \"26d09284075f5c87675790d1ad74212a7863eb8bdf228cdbd364f08a152fc62d\", \"files\": {}}",
-        "dest": "cargo/vendor/croner-4.0.2",
-        "dest-filename": ".cargo-checksum.json"
-    },
-    {
-        "type": "archive",
-        "archive-type": "tar-gzip",
         "url": "https://static.crates.io/crates/crossbeam-channel/crossbeam-channel-0.5.17.crate",
         "sha256": "98b0cc327b5bc766e7fda9c9260cc0fa81b43a8e240440422dff70788e3f9ef1",
         "dest": "cargo/vendor/crossbeam-channel-0.5.17"
@@ -6021,27 +6008,27 @@
     {
         "type": "archive",
         "archive-type": "tar-gzip",
-        "url": "https://static.crates.io/crates/rcman/rcman-0.2.7.crate",
-        "sha256": "db8d61cec5646adcca97dcbafcb40bfd466b789788c2e5f5af6ebbd2d0894aa6",
-        "dest": "cargo/vendor/rcman-0.2.7"
+        "url": "https://static.crates.io/crates/rcman/rcman-0.2.8.crate",
+        "sha256": "b29d61b7cec183643c0e226469ac54869062b97333017f25b5785b1900bef45e",
+        "dest": "cargo/vendor/rcman-0.2.8"
     },
     {
         "type": "inline",
-        "contents": "{\"package\": \"db8d61cec5646adcca97dcbafcb40bfd466b789788c2e5f5af6ebbd2d0894aa6\", \"files\": {}}",
-        "dest": "cargo/vendor/rcman-0.2.7",
+        "contents": "{\"package\": \"b29d61b7cec183643c0e226469ac54869062b97333017f25b5785b1900bef45e\", \"files\": {}}",
+        "dest": "cargo/vendor/rcman-0.2.8",
         "dest-filename": ".cargo-checksum.json"
     },
     {
         "type": "archive",
         "archive-type": "tar-gzip",
-        "url": "https://static.crates.io/crates/rcman-derive/rcman-derive-0.2.7.crate",
-        "sha256": "86ab9824871360795c992f6dcf37f63b7ab71e315b73e6afc304f3a16059681d",
-        "dest": "cargo/vendor/rcman-derive-0.2.7"
+        "url": "https://static.crates.io/crates/rcman-derive/rcman-derive-0.2.8.crate",
+        "sha256": "d3c51b2c0a3ce20c5a024fbd76fa1c757f313afe96b43f16be5ae64abe89b0d9",
+        "dest": "cargo/vendor/rcman-derive-0.2.8"
     },
     {
         "type": "inline",
-        "contents": "{\"package\": \"86ab9824871360795c992f6dcf37f63b7ab71e315b73e6afc304f3a16059681d\", \"files\": {}}",
-        "dest": "cargo/vendor/rcman-derive-0.2.7",
+        "contents": "{\"package\": \"d3c51b2c0a3ce20c5a024fbd76fa1c757f313afe96b43f16be5ae64abe89b0d9\", \"files\": {}}",
+        "dest": "cargo/vendor/rcman-derive-0.2.8",
         "dest-filename": ".cargo-checksum.json"
     },
     {
